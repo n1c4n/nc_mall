@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: gateway
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+      username: nacos
+      password: only1man
+      discovery:
+        namespace: 161b3d95-1428-4810-9883-337ebf231867  # 命名空间
+        group: A_GROUP # 开发组别
+        service: gateway # 注册在nacos中的名字
+      config:
+        namespace: ${spring.cloud.nacos.discovery.namespace}
+        group: ${spring.cloud.nacos.discovery.group}
+        prefix: ${spring.application.name}  # 配置文件的前缀
+        file-extension: yml  # 配置文件的拓展名
+  profiles:
+    active: dev # 开发环境
+#logging:
+#  config: classpath:logback-spring.xml
